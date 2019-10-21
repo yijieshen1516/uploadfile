@@ -1,0 +1,104 @@
+body {
+  padding: 50px;
+  font-family: "Helvetica Neue", sans-serif;
+  background-color: #fefefe;
+}
+
+body > * {
+  box-sizing: border-box;
+}
+
+.button {
+	font-weight: bold;
+  letter-spacing: 1px;
+	font-size: 14px;
+	line-height: 1;
+	height: 44px;
+	padding: 14px;
+	width: 250px;
+	text-align: center;
+	text-transform: uppercase;
+	background-color: transparent;
+	border: 1px gray solid;
+	border-radius: 4px;
+	position: relative;
+	overflow: hidden;
+  box-sizing: border-box;
+	display: inline-block;
+	transition: background-color 0.3s, border-color 0.3s, color 0.3s, box-shadow 0.3s;
+
+	&:hover {
+		box-shadow: 0 3px 0 rgba(0,0,0,.2);
+		color: #FFFFFF !important;
+    background-color: green;
+	}
+}
+
+.upload-hide {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  display: block;
+  text-indent: -300px;
+}
+
+.styled-upload {
+  display: flex;
+  .upload {
+    @extend .button;
+    position: relative;
+    cursor: pointer;
+    &:after {
+      position: absolute;
+      right: 24px;
+    }
+  }
+
+  .file {
+    border:1px solid black;
+    height:40px;
+    flex-grow: 1;
+    line-height: 40px;
+    padding:0 10px;
+    border-radius: 3px;
+    margin-right: 10px;
+    color: blue;
+    display:block;
+    background-color: rgba(white, .3);
+    color: black;
+    text-align: left;
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+
+    span {
+      width: 160px;
+      height: 1em;
+      display: block;
+      margin: 0 auto;
+    }
+
+    &:before {
+      position: absolute;
+      left: 24px;
+    }
+
+    &:after {
+      position: absolute;
+      right: 24px;
+      opacity: 0;
+      transition: opacity .3s;
+      top: 50%;
+      margin-top: -8px;
+    }
+
+    &:hover, &:focus {
+      background-color: white;
+      box-shadow: 0 0 6px rgba(orange, .5);
+
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+}
