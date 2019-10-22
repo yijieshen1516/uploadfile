@@ -5,6 +5,7 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
+# azure blob storage key
 app.config['ACCOUNT'] = 'offsetpressurefiles'
 app.config['STORAGE_KEY'] = 'lZ7pAwQhPRZ+SaTUGoN9I7uLVxFEDm9OxDOhMDXLUzUgDpaMKZs+2VrAa/ea4MFwCBV9YbKTANXtGMQw3+kJpA=='
 app.config['CONTAINER'] = 'raw-file-landings'
@@ -15,7 +16,7 @@ blob_service = BlockBlobService(account_name=app.config['ACCOUNT'], account_key=
 def welcome():
     return render_template('profile.html')
 
-
+# login route
 @app.route('/', methods=['GET', 'POST'])
 def login():
     error = None
@@ -43,6 +44,7 @@ def append_filename(filename, api, timezone):
     return "".join(parts[:-1]) + '_' + api + '_' + timezone + '.' + parts[-1]
 
 
+# upload file route
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
     error = None

@@ -1,38 +1,69 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
 body {
   padding: 50px;
-  font-family: "Helvetica Neue", sans-serif;
-  background-color: #fefefe;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #95a7b9
 }
 
 body > * {
   box-sizing: border-box;
 }
 
+.upload {
+  width: 400px;
+  margin: 16px auto;
+  font-size: 16px;
+}
+
+.upload-header,
+.upload p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.upload-triangle {
+  width: 0;
+  margin-right: auto;
+  margin-left: auto;
+  border: 12px solid transparent;
+  border-bottom-color: #ED171F;
+}
+
+.upload-header {
+  background: #ED171F;
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
 .button {
-	font-weight: bold;
-  letter-spacing: 1px;
-	font-size: 14px;
+    letter-spacing: 1px;
+	font-size: 12px;
 	line-height: 1;
 	height: 44px;
-	padding: 14px;
-	width: 250px;
+	padding: 20px;
+	width: 400px;
 	text-align: center;
 	text-transform: uppercase;
-	background-color: transparent;
+	background-color: #ED171F;
 	border: 1px gray solid;
 	border-radius: 4px;
 	position: relative;
 	overflow: hidden;
+	color: #fff;
   box-sizing: border-box;
 	display: inline-block;
 	transition: background-color 0.3s, border-color 0.3s, color 0.3s, box-shadow 0.3s;
-
-	&:hover {
-		box-shadow: 0 3px 0 rgba(0,0,0,.2);
-		color: #FFFFFF !important;
-    background-color: green;
-	}
 }
+
+.button:hover {
+	background-color: #17c;
+}
+
 
 .upload-hide {
   width: 0;
