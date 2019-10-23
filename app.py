@@ -64,9 +64,9 @@ def upload():
                 error = 'Exception=' + Exception
             return render_template('upload.html', error=error)
         elif not allowed_file(file.filename):
-            error = 'Please select a file and allowed file is txt and png'
+            error = 'Please select a file and allowed file is txt, csv and png'
         elif not allowed_api(api):
-            error = 'Please enter API number and allowed API length is 14'
+            error = 'Please enter an API number and allowed API length is 14'
     return render_template('upload.html', error=error)
 
 

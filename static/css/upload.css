@@ -40,6 +40,31 @@ body > * {
   color: #fff;
 }
 
+.dropdown{
+	position: relative;
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	cursor: pointer;
+	background: #fff;
+	border-radius: 3px;
+	margin:20px 0;
+}
+
+
+.upload input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 10px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+  margin:20px 0;
+}
+
 .button {
     letter-spacing: 1px;
 	font-size: 12px;
@@ -97,13 +122,13 @@ body > * {
     display:block;
     background-color: rgba(white, .3);
     color: black;
-    text-align: left;
+    text-align: center;
     position: relative;
     cursor: pointer;
     text-align: center;
 
     span {
-      width: 160px;
+      width: 350px;
       height: 1em;
       display: block;
       margin: 0 auto;

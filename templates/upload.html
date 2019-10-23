@@ -13,26 +13,33 @@
     <h2 class = "upload-header">Upload New File</h2>
 
     <form method="post" enctype="multipart/form-data">
-        <div class="form-row">
-            <p>Time Zone: <select name = "timezone">
-           <option value = "UTC-4"> UTC-4 </option>
-           <option value = "UTC-5"> UTC-5 </option>
-           <option value = "UTC-6"> UTC-6 </option>
-           <option value = "UTC-7"> UTC-7 </option>
-           <option value = "UTC-8"> UTC-8 </option>
-           <option value = "UTC-10"> UTC-10 </option>
+
+        <p>Time Zone: <select name = "timezone" class="dropdown">
+            <option value = "UTC-4"> UTC-4 </option>
+            <option value = "UTC-5"> UTC-5 </option>
+            <option value = "UTC-6"> UTC-6 </option>
+            <option value = "UTC-7"> UTC-7 </option>
+            <option value = "UTC-8"> UTC-8 </option>
+            <option value = "UTC-10"> UTC-10 </option>
             </select></p>
             <p>API14: <input type="text" placeholder="Well API" name="wellAPI" value="{{ request.form.wellAPI }}"></p>
-            <input type="file" name="file" />
-        </div>
-        <div class="form-row">
+            <input type="file" name="file"/>
             <input type="submit" value = "Upload" class="button" />
-        </div>
     </form>
 
       {% if error %}
         <p class="error"><strong>Error:</strong> {{ error }}</p>
       {% endif %}
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+      {% endwith %}
 
 </div>
 </body>
