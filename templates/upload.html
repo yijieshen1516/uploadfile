@@ -15,16 +15,20 @@
     <form method="post" enctype="multipart/form-data">
 
         <p>Time Zone: <select name = "timezone" class="dropdown">
-            <option value = "UTC-4"> UTC-4 </option>
-            <option value = "UTC-5"> UTC-5 </option>
-            <option value = "UTC-6"> UTC-6 </option>
-            <option value = "UTC-7"> UTC-7 </option>
-            <option value = "UTC-8"> UTC-8 </option>
-            <option value = "UTC-10"> UTC-10 </option>
-            </select></p>
-            <p>API14: <input type="text" placeholder="Well API" name="wellAPI" value="{{ request.form.wellAPI }}"></p>
-            <input type="file" name="file"/>
-            <input type="submit" value = "Upload" class="button" />
+            <option value = "EasternTimeZone"> Eastern Time Zone </option>
+            <option value = "CentralTimeZone"> Central Time Zone </option>
+            <option value = "MountainTimeZone"> Mountain Time Zone </option>
+            <option value = "PacificTimeZone"> Pacific Time Zone </option>
+            <option value = "HawaiiTimeZone"> Hawaii Time Zone </option>
+        </select></p>
+        <p>Pressure Type: <select name = "pressuretype" class="dropdown">
+            <option value = "Surface"> Surface </option>
+            <option value = "BottomHole"> BottomHole </option>
+        </select></p>
+        <p>API10(No-Hyphen): <input type="text" placeholder="Well API" name="wellAPI" value="{{ request.form.wellAPI }}"></p>
+        <p>Please upload pressure time series of one well</p>
+        <input type="file" name="file"/>
+        <input type="submit" value = "Upload" class="button" />
     </form>
 
       {% if error %}

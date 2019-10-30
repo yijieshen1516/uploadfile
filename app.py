@@ -28,7 +28,7 @@ def login():
     return render_template('login.html', error=error)
 
 
-ALLOWED_EXTENSIONS = {'pdf', 'png', 'csv'}
+ALLOWED_EXTENSIONS = {'txt', 'csv'}
 
 
 def allowed_file(filename):
@@ -36,12 +36,12 @@ def allowed_file(filename):
 
 
 def allowed_api(api):
-    return len(api) == 14 and api.isdigit()
+    return len(api) == 10 and api.isdigit()
 
 
-def append_filename(filename, api, timezone):
+def append_filename(filename, api, timezone, pressuretype):
     parts = filename.split('.')
-    return "".join(parts[:-1]) + '_' + api + '_' + timezone + '.' + parts[-1]
+    return "".join(parts[:-1]) + '_' + api + '_' + pressuretype + '_' + timezone + '.' + parts[-1]
 
 
 # upload file route
@@ -52,11 +52,12 @@ def upload():
         file = request.files['file']
         api = request.form['wellAPI']
         timezone = request.form['timezone']
+        pressuretype = request.form['pressuretype']
         if file.filename == '':
             error = 'No selected file'
         if file and allowed_file(file.filename) and allowed_api(api):
             filename = secure_filename(file.filename)
-            filename = append_filename(filename, api, timezone)
+            filename = append_filename(filename, api, timezone, pressuretype)
             try:
                 blob_service.create_blob_from_stream(app.config['CONTAINER'], filename, file)
                 error = 'file successfully saved in azure blob storage'
@@ -64,9 +65,9 @@ def upload():
                 error = 'Exception=' + Exception
             return render_template('upload.html', error=error)
         elif not allowed_file(file.filename):
-            error = 'Please select a file and allowed file is txt, csv and png'
+            error = 'Please select a file and allowed file is txt and csv'
         elif not allowed_api(api):
-            error = 'Please enter an API number and allowed API length is 14'
+            error = 'Please enter an API number and allowed API length is 10'
     return render_template('upload.html', error=error)
 
 
